@@ -1,5 +1,5 @@
 # frontend-restaurant
-FrontEnd para API restaurante
+Frontend para API restaurante
 
 
 ## Pré requisitos para executar o projeto
