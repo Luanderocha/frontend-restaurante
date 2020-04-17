@@ -33,14 +33,15 @@ body {
   height: auto;
 }
 
-.itensForm{
+.itensForm {
   margin: 3rem;
 }
 
 .loginBox {
   margin: 2rem;
   width: fit-content;
-  border: 0.09rem solid #007bff;
+  border: 0.04rem outset #007bff;
+  border-radius: 0.8rem;
   box-shadow: 0.2rem 0.2rem 0.3rem #0f73d146;
   text-align: justify;
   display: flex;
