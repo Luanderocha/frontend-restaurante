@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import ProdutosService from "../../servicos/produtos_service";
-import axios from 'axios'
+import axios from "axios";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -21,9 +20,9 @@ function FormProdutos() {
 
   useEffect(() => {
     if (idProduto !== undefined) {
-      axios.get(`http://localhost:3001/produtos/${idProduto}`).then(
-        res=> setForm(res.data)
-      )
+      axios
+        .get(`http://localhost:3001/produtos/${idProduto}`)
+        .then((res) => setForm(res.data));
     }
   }, [idProduto]);
 
@@ -38,13 +37,16 @@ function FormProdutos() {
   const submeter = (evento) => {
     evento.preventDefault();
     if (idProduto === undefined) {
-      ProdutosService.adicionarProduto(form, () => {
-        history.push("/produtos");
+      axios.post("http://localhost:3001/produtos/novo", form).then((res) => {
+        if (res.statusText === "OK") history.push("/produtos");
       });
     } else {
-      ProdutosService.editarProduto(form, () => {
-        history.push("/produtos");
-      });
+      axios
+        .put(`http://localhost:3001/produtos/editar/${idProduto}`, form)
+        .then((res) => {
+          if (res.statusText === "OK") history.push("/produtos");
+          history.push("/produtos");
+        });
     }
   };
 

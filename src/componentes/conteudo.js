@@ -1,32 +1,38 @@
 import React from "react";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
+import "../index.css";
 
 function Conteudo() {
-  return (
-    <Jumbotron>
-      <Form>
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
+  const history = useHistory();
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-        <Form.Group controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+  const logar = () => {
+    history.push("/produtos");
+  };
+
+  return (
+    <div className="loginBox">
+      <Form>
+        <div className="itensForm">
+          <Form.Group>
+            <h3>Login</h3>
+          </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="email" placeholder="Digite seu email" />
+          </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Senha</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+          <Button variant="primary" type="submit" onClick={() => logar()}>
+            Submit
+          </Button>
+        </div>
       </Form>
-    </Jumbotron>
+    </div>
   );
 }
 
